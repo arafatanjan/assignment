@@ -5,22 +5,28 @@ const GoogleLogin = () => {
   const { googleLogin } = useAuth();
 
   const handleGoogleSignIn = () => {
+    
+
     googleLogin().then((data) => {
-      
+      console.log(data?.user.photoUrl)
        if (data?.user?.email) {
          const userInfo = {
            email: data?.user?.email,
           name: data?.user?.displayName,
+          photo: data?.user?.photoUrl
          };
-         fetch("http://localhost:5000/user", {
+          
+         fetch("https://assignment-server-nine-olive.vercel.app/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            
           },
           body: JSON.stringify(userInfo),
         })
           .then((res) => res.json())
           .then((data) => {
+            console.log(data);
             localStorage.setItem("token", data?.token);
           });
         }

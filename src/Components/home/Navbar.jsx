@@ -65,7 +65,7 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <a className="inline-block bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-130">Playing Balls</a>
+        <a className="inline-block bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-130">AI Courses</a>
 
       </div>
       <div className="navbar-center hidden lg:flex">

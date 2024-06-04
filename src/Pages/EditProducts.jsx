@@ -28,7 +28,7 @@ const EditProducts = () => {
     if (!window.confirm('Are you sure you want to edit this item?')) {
       return;
     }
-    await fetch(`http://localhost:5000/balls/${ball._id}`, {
+    await fetch(`https://assignment-server-nine-olive.vercel.app/courses/${ball._id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",

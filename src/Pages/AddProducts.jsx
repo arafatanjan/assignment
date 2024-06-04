@@ -19,7 +19,7 @@ const AddProducts = () => {
         return;
       }
   
-      await fetch("http://localhost:5000/balls", {
+      await fetch("https://assignment-server-nine-olive.vercel.app/courses", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -30,6 +30,7 @@ const AddProducts = () => {
         .then((res) => res.json())
         .then((data) => {
           //console.log(data);
+          localStorage.setItem("token", data?.token);
           setShowToast(true);
          setTimeout(() => setShowToast(false), 3000);
           form.reset();

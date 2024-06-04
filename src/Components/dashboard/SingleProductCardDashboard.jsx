@@ -10,44 +10,28 @@ const SingleProductCardDashboard = ({ ball, onDelete }) => {
   const [toastMessage, setToastMessage] = useState("");
   const token = localStorage.getItem("token");
 //console.log(ball);
-   const handleDelete = async () => {
-    // setToastMessage("Deleted successfully.");
-    // setShowToast(true);
-    // setTimeout(() => setShowToast(false),1000); 
-    try {
-      
-      const response = await fetch(`http://localhost:5000/balls/${_id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-      });
+//http://localhost:5000
 
-      if (!response.ok) {
-        throw new Error("Failed to delete the product.");
-      }
-
-      const data = await response.json();
-      //console.log(data);
+const handleDelete = async () => {
+  await fetch(`https://assignment-server-nine-olive.vercel.app/courses/${_id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then(() => {
       if (!window.confirm('Are you sure you want to delete this item?')) {
         return;
       }
-      //window.confirm('Delete the item?')
       // setToastMessage("Deleted successfully.");
       // setShowToast(true);
       // setTimeout(() => setShowToast(false),3000);
-      toast.success("deleted successfully")
-      onDelete(_id);     
-      //toast("Wow so easy!")
-      
-    } catch (error) {
-      console.error("Error deleting product:", error);
-      setToastMessage("Failed to delete.");
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
-    }
-  };
+      toast.success("Product Deleted");
+      onDelete(_id);
+    });
+};
 
   return (
   
@@ -88,3 +72,4 @@ const SingleProductCardDashboard = ({ ball, onDelete }) => {
 };
 
 export default SingleProductCardDashboard;
+

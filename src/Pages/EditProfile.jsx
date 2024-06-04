@@ -26,7 +26,7 @@ console.log(data);
         return;
       }
     fetch(
-      `http://localhost:5000/user/${data?.email}`,
+      `https://assignment-server-nine-olive.vercel.app/user/${data?.email}`,
       {
         method: "PATCH",
         headers: {

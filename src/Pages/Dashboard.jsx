@@ -9,18 +9,25 @@ const Dashboard = ({email}) => {
   const location = useLocation();
   const [userInfo, setUserInfo] = useState();
   //const { email, password } = location.state || {};
-console.log(user?.email);
+
 
 useEffect(() => {
-  fetch(`http://localhost:5000/user/${user?.email}`)
+  fetch(`https://assignment-server-nine-olive.vercel.app/user/${user?.email}`)
     .then((res) => res.json())
     .then((data) => setUserInfo(data));
 }, [user]);
-
+console.log(userInfo);
 return (
   <div className="dashboard min-h-screen flex flex-col items-center justify-center bg-gray-100">
     <div className="card w-96 bg-white shadow-xl rounded-lg p-6">
       <h1 className="text-3xl font-bold text-center mb-4">Welcome to Your Dashboard</h1>
+      <div className="w-12 rounded-full ">
+            <img src={user?.photoURL || "/public/placeholder.jpg"} />
+          </div>
+        
+      {/* <figure>
+        <img src={userInfo.img} alt="profile" className="object-cover w-96 h-100"/>
+      </figure> */}
       <div className="text-center">
       <p className="text-xl mb-2">
           <span className="font-semibold">Name:</span> {userInfo?.name || "User"}

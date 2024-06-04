@@ -24,13 +24,13 @@ export const router = createBrowserRouter([
         {
           path: "/",
           element: <Home />,
-          loader: () => fetch("http://localhost:5000/balls"),
+          loader: () => fetch("https://assignment-server-nine-olive.vercel.app/courses"),
         },
         {
           path: "/products/:id",
           element: <ProductDetails />,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/products/${params.id}`),
+            fetch(`https://assignment-server-nine-olive.vercel.app/products/${params.id}`),
         },
         {
           path: "/about",
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
           ),
           loader: ({ params }) =>
             fetch(
-              `http://localhost:5000/user/get/${params.id}`
+              `https://assignment-server-nine-olive.vercel.app/user/get/${params.id}`
             ),
         },
          {
@@ -93,7 +93,7 @@ export const router = createBrowserRouter([
             </PrivateRoute>
           ),
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/balls/${params.id}`),
+            fetch(`https://assignment-server-nine-olive.vercel.app/courses/${params.id}`),
         },       
         ],
     },
