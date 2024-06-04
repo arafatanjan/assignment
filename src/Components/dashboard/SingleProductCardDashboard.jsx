@@ -8,6 +8,7 @@ const SingleProductCardDashboard = ({ ball, onDelete }) => {
   const { _id, title, brand, price, description, image_url } = ball;
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const token = localStorage.getItem("token");
 //console.log(ball);
    const handleDelete = async () => {
     // setToastMessage("Deleted successfully.");
@@ -17,6 +18,10 @@ const SingleProductCardDashboard = ({ ball, onDelete }) => {
       
       const response = await fetch(`http://localhost:5000/balls/${_id}`, {
         method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
       });
 
       if (!response.ok) {

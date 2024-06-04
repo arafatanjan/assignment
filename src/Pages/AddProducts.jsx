@@ -3,7 +3,7 @@ import { useState } from "react";
 const AddProducts = () => {
    const [showToast, setShowToast] = useState(false);
     const handleSubmit = async (e) => {
-      
+      const token = localStorage.getItem("token");
       e.preventDefault();
   
       const form = e.target;
@@ -23,12 +23,13 @@ const AddProducts = () => {
         method: "POST",
         headers: {
           "Content-type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          //console.log(data);
           setShowToast(true);
          setTimeout(() => setShowToast(false), 3000);
           form.reset();

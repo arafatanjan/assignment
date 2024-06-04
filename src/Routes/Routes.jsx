@@ -12,6 +12,7 @@ import ProductDetails from "../Pages/ProductDetails";
 import AllProducts from "../Pages/AllProducts";
 import AddProducts from "../Pages/AddProducts";
 import EditProducts from "../Pages/EditProducts";
+import EditProfile from "../Pages/EditProfile";
 
 
 export const router = createBrowserRouter([
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
           path: "/products/:id",
           element: <ProductDetails />,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/balls/${params.id}`),
+            fetch(`http://localhost:5000/products/${params.id}`),
         },
         {
           path: "/about",
@@ -56,6 +57,18 @@ export const router = createBrowserRouter([
         </PrivateRoute>
         ),
          },
+         {
+          path: "profile/edit/:id",
+          element: (
+            <PrivateRoute>
+              <EditProfile />
+            </PrivateRoute>
+          ),
+          loader: ({ params }) =>
+            fetch(
+              `http://localhost:5000/user/get/${params.id}`
+            ),
+        },
          {
           path: "all-products",
           element: (

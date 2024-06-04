@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const SingleProduct = ({ ball }) => {
   const { id, title, brand, price, description, image_url } = ball;
-
+  
   return (
     <div className="w-72 mx-auto bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
       <div className="relative ">
