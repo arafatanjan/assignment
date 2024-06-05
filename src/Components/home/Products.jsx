@@ -9,7 +9,7 @@ const Products = ({ data }) => {
 
       <div className="flex flex-wrap gap-2 px-6 justify-center items-center">
       {
-        data?.slice(0, 8).map((course) => (
+        data?.slice(0, 6).map((course) => (
           <SingleProduct key={course._id} course={course} />
         ))
       }
