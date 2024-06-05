@@ -1,0 +1,42 @@
+.collage-container {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr); 
+    grid-gap: 10px; 
+    padding: 50px; 
+    
+    
+}
+  
+  .collage-photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .collage-photo.small {
+    grid-row: span 1;
+    grid-column: span 1;
+  }
+  
+  .collage-photo.medium {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+  
+  .collage-photo.large {
+    grid-row: span 3;
+    grid-column: span 3;
+  }
+
+  
+ .speech-bubble {
+    position: absolute;
+    bottom: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+}  

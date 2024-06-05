@@ -1,25 +1,45 @@
 import { Link, Outlet } from "react-router-dom";
+import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const DashboardLayout = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-2 bg-gray-300 min-h-screen p-12">
-        <ul>
-          <li className="border border-black p-4 text w-full">
-            <Link to={"/dashboard"}>Dashboard</Link>
+    <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row">
+      {/* Sidebar */}
+      <div className={`bg-gray-800 text-white md:w-64 w-full ${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
+        <div className="p-6 text-lg font-bold border-b border-gray-700">Menu</div>
+        <ul className="flex flex-col p-4">
+          <li className="mb-4">
+            <Link to={"/dashboard"} className="block p-4 bg-gray-700 rounded hover:bg-gray-600">Dashboard</Link>
           </li>
-          <li className="border border-black p-4 text w-full">
-            <Link to={"all-products"}>All Products</Link>
+          <li className="mb-4">
+            <Link to={"all-products"} className="block p-4 bg-gray-700 rounded hover:bg-gray-600">All Products</Link>
           </li>
-          <li className="border border-black p-4 text w-full">
-            <Link to={"add-products"}>Add Product</Link>
+          <li className="mb-4">
+            <Link to={"add-products"} className="block p-4 bg-gray-700 rounded hover:bg-gray-600">Add Product</Link>
           </li>
-          <li className="border border-black p-4 text w-full">
-            <Link to={"/"}>Home</Link>
+          <li className="mb-4">
+            <Link to={"/"} className="block p-4 bg-gray-700 rounded hover:bg-gray-600">Home</Link>
           </li>
         </ul>
       </div>
-      <div className="col-span-10 p-20">
+
+      {/* Hamburger Menu */}
+      <div className="bg-gray-800 text-white md:hidden flex justify-between items-center p-4">
+        <div className="text-lg font-bold">Menu</div>
+        <button onClick={toggleSidebar} className="text-2xl">
+          {isSidebarOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 p-6 md:p-20">
         <Outlet />
       </div>
     </div>

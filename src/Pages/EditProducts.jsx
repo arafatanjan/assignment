@@ -7,7 +7,7 @@ const EditProducts = () => {
   const [title, setTitle] = useState(ball.title);
   const [price, setPrice] = useState(ball.price);
   const [brand, setBrand] = useState(ball.brand);
-  const [id, setId] = useState(ball.id);
+  const [id, setId] = useState(ball._id);
   const [description, setDescription] = useState(ball.description);
   const [image_url, setImageURL] = useState(ball.image_url);
   const [showToast, setShowToast] = useState(false);
@@ -37,8 +37,11 @@ const EditProducts = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => setShowToast(true));   
+      .then((data) =>{localStorage.setItem("token", data?.token);
+      setShowToast(true);   
       setTimeout(() => setShowToast(false), 3000); 
+      form.reset();
+      } )
   };
 
   return (

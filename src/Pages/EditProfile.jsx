@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function EditProfile() {
     const [showToast, setShowToast] = useState(false);
   const data = useLoaderData();
-console.log(data);
+//console.log(data);
 
   const handleSubmit = (e) => {
     e.preventDefault();

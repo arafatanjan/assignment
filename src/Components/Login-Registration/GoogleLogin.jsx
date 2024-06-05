@@ -8,7 +8,7 @@ const GoogleLogin = () => {
     
 
     googleLogin().then((data) => {
-      console.log(data?.user.photoUrl)
+      
        if (data?.user?.email) {
          const userInfo = {
            email: data?.user?.email,

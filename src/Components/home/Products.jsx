@@ -1,20 +1,19 @@
-/* eslint-disable no-undef */
+
 import SingleProduct from "./SingleProducts";
 
-// eslint-disable-next-line react/prop-types
+
 const Products = ({ data }) => {
   return (
     <div>
-      <h1 className="my-8 text-2xl font-bold text-center">Our Products</h1>
+      <h1 className="text-3xl font text-center my-8 text-black bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent shadow-md transition duration-300 ease-in-out transform hover:scale-105">Our courses</h1>
 
-      <div className="flex gap-2 px-6 justify-center items-center ">
-        {
-          // eslint-disable-next-line react/prop-types
-          data?.slice(0, 5).map((ball) => (
-            <SingleProduct key={ball.id} ball={ball} />
-          ))
-        }
-      </div>
+      <div className="flex flex-wrap gap-2 px-6 justify-center items-center">
+      {
+        data?.slice(0, 8).map((course) => (
+          <SingleProduct key={course._id} course={course} />
+        ))
+      }
+    </div>
     </div>
   );
 };

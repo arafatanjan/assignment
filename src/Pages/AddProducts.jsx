@@ -3,6 +3,7 @@ import { useState } from "react";
 const AddProducts = () => {
    const [showToast, setShowToast] = useState(false);
     const handleSubmit = async (e) => {
+      
       const token = localStorage.getItem("token");
       e.preventDefault();
   
@@ -18,19 +19,17 @@ const AddProducts = () => {
       if (!window.confirm('Are you sure you want to add this item?')) {
         return;
       }
-  
+      
       await fetch("https://assignment-server-nine-olive.vercel.app/courses", {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          "Content-type": "application/json",       
           authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       })
         .then((res) => res.json())
-        .then((data) => {
-          //console.log(data);
-          localStorage.setItem("token", data?.token);
+        .then((data) => {localStorage.setItem("token", data?.token);      
           setShowToast(true);
          setTimeout(() => setShowToast(false), 3000);
           form.reset();
@@ -39,12 +38,12 @@ const AddProducts = () => {
     };
   
     return (
-      <div>
+      <div className="max-w-lg mx-auto">
         <h1 className="text-5xl font-bold text-center">Add a Product</h1>
         {showToast && (
         <div className="toast toast-top toast-center">
         <div className="alert alert-info">
-          <span>Add Sussessfully</span>
+          <span>Added Sussessfully</span>
         </div>
       </div>
       )}
@@ -90,14 +89,7 @@ const AddProducts = () => {
                 placeholder="Image URL"
               />
             </div>
-          {/* <div className="mt-2"> */}
-            {/* <input
-              className="bg-gray-100 p-4 w-full border border-black rounded-lg"
-              type="text"
-              name="id"
-              placeholder="ID"
-            /> */}
-          {/* </div> */}
+          
             <div className="mt-2 flex justify-center items-center">
               <input
                 className="btn mt-4 w-full bg-red-500 text-white p-4"

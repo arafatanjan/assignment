@@ -20,7 +20,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    //console.log(email, password);
 
     await signIn(email, password);
     //toast.success("Logged in successfully!");
@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <> 
-    {/* {email && <Dashboard email={email}/>} */}
+    
     <form onSubmit={handleSUbmit} className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">

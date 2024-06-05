@@ -13,6 +13,7 @@ import AllProducts from "../Pages/AllProducts";
 import AddProducts from "../Pages/AddProducts";
 import EditProducts from "../Pages/EditProducts";
 import EditProfile from "../Pages/EditProfile";
+import Alumni from "../Pages/Alumni";
 
 
 export const router = createBrowserRouter([
@@ -30,12 +31,16 @@ export const router = createBrowserRouter([
           path: "/products/:id",
           element: <ProductDetails />,
           loader: ({ params }) =>
-            fetch(`https://assignment-server-nine-olive.vercel.app/products/${params.id}`),
+            fetch(`https://assignment-server-nine-olive.vercel.app/courses/${params.id}`),
         },
         {
           path: "/about",
           element: <About />,
-        },
+        },       
+        {
+          path: "/alumni",
+          element: <Alumni/>,
+        },       
         {
           path: "/login",
           element: <Login />,
@@ -56,6 +61,10 @@ export const router = createBrowserRouter([
           <Dashboard />
         </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-server-nine-olive.vercel.app/courses`
+          ),
          },
          {
           path: "profile/edit/:id",
@@ -76,6 +85,7 @@ export const router = createBrowserRouter([
               <AllProducts />
             </PrivateRoute>
           ),
+          
         },
         {
           path: "add-products",

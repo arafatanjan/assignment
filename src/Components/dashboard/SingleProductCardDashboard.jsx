@@ -4,15 +4,20 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 //import { toast } from 'react-toastify';
 
-const SingleProductCardDashboard = ({ ball, onDelete }) => {
-  const { _id, title, brand, price, description, image_url } = ball;
+const SingleProductCardDashboard = ({ course, onDelete }) => {
+  const { _id, title, brand, price, description, image_url } = course;
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const token = localStorage.getItem("token");
-//console.log(ball);
-//http://localhost:5000
+
+//https://assignment-server-nine-olive.vercel.app
 
 const handleDelete = async () => {
+  const token = localStorage.getItem("token");
+  if (!window.confirm('Are you sure you want to delete this item?')) {
+    return;
+  }
+
   await fetch(`https://assignment-server-nine-olive.vercel.app/courses/${_id}`, {
     method: "DELETE",
     headers: {
@@ -21,10 +26,9 @@ const handleDelete = async () => {
     },
   })
     .then((res) => res.json())
-    .then(() => {
-      if (!window.confirm('Are you sure you want to delete this item?')) {
-        return;
-      }
+    .then((data) => {
+      localStorage.setItem("token", data?.token); 
+      
       // setToastMessage("Deleted successfully.");
       // setShowToast(true);
       // setTimeout(() => setShowToast(false),3000);
@@ -44,14 +48,14 @@ const handleDelete = async () => {
         </div>
       )} */}
       <figure>
-        <img src={image_url} alt="ball" className="object-cover w-96 h-100"/>
+        <img src={image_url} alt="course" className="object-cover w-96 h-100"/>
       </figure>
       <div className="card-body p-4 justify-center">
         <div className="justify-center">
         <h2 className="card-title">{title}</h2>
         <h3 className="text-xl font-semibold">{brand}</h3>
         <h3 className="text-xl font-semibold">{price}</h3>
-        <p>{description}</p>
+        <p>{description.split(' ').slice(0, 15).join(' ')}{description.split(' ').length > 15 ? '...' : ''}</p>
         </div>
         <div className="card-actions justify-center space-x-1">
           <button className="btn bg-indigo-500 text-white flex items-center space-x-2">

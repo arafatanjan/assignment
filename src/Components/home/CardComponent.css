@@ -1,0 +1,11 @@
+
+  .slide-left {
+    animation: slide-left 20s linear infinite;
+  }
+  
+  @keyframes slide-left {   
+    50% {
+      transform: translateX(-100vw);
+    }  
+  }
+  
